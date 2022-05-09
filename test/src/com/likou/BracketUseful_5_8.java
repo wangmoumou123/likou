@@ -3,16 +3,53 @@ package com.likou;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BracketUseful {
+public class BracketUseful_5_8 {
 
     public static void main(String[] args) {
-        System.out.println(new BracketUseful().generateParenthesis(5));
+        System.out.println(new BracketUseful_5_8().generateParenthesis(2));
+    }
+
+
+    public List<String> generateParenthesis(int n) {
+
+        List<String> result = new ArrayList<>();
+        if (n == 0) {
+            return result;
+        }
+
+        String thisTime = "";
+
+        deal(result, n, n, thisTime);
+
+
+        return result;
+
+
+    }
+
+    private void deal(List<String> result, int left, int right, String thisTime) {
+
+        if (left == 0 && right == 0) {
+            result.add(thisTime);
+            return;
+
+        }
+        if (left > right) return;
+
+        if (left > 0) {
+            deal(result, left - 1, right, thisTime + "(");
+        }
+
+        if (right > 0) {
+            deal(result, left, right - 1, thisTime + ")");
+        }
+
     }
 
 
     // 做减法
 
-    public List<String> generateParenthesis(int n) {
+    public List<String> generateParenthesis2(int n) {
         List<String> res = new ArrayList<>();
         // 特判
         if (n == 0) {
