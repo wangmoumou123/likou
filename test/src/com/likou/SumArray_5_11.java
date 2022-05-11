@@ -13,7 +13,6 @@ public class SumArray_5_11 {
 
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(candidates);
-        System.out.println("hello");
 
 
 
