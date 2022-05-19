@@ -81,6 +81,7 @@ public class AllSortNoRepeat_5_16 {
 
     }
 
+//*/5 *   * * *   root    service  epapermanager restart
 
     public List<List<Integer>> permute2(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
