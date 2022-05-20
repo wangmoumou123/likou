@@ -1,6 +1,8 @@
 package com.deke;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class _5_19_WaterFlower_70 {
@@ -43,45 +45,82 @@ public class _5_19_WaterFlower_70 {
             输出
             -1
          */
-        public static void main(String[] args) {
-            Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = Integer.parseInt(scanner.nextLine().trim());
+        int M = Integer.parseInt(scanner.nextLine().trim());
+        scanner.close();
+        if (N<3 || N>7){
+            System.out.println(-1);
+            return;
+        }
 
-            int N = Integer.parseInt(in.nextLine());
-            int M = Integer.parseInt(in.nextLine());
-            in.close();
-
-            if (N < 3 || N > 7) {
-                System.out.println(-1);
+        int start = (int) Math.pow(10, N - 1);
+        int stop = (int) Math.pow(10, N);
+        List<Integer> data = new ArrayList<>();
+        for (int i = start; i < stop; i++) {
+            int bit = start;
+            int sum = 0;
+            while (bit != 1) {
+                sum += Math.pow(i / bit % 10, N);
+                bit /= 10;
+            }
+            sum+= Math.pow(i%10, N);
+            if (sum== i){
+                data.add(i);
+            }
+            if (data.size()== M+1){
+                System.out.println(sum);
                 return;
             }
 
-            LinkedList<Integer> res = new LinkedList<>();
-
-            int start = (int) Math.pow(10, N - 1);
-            int end = (int) Math.pow(10, N);
-
-            for (int i = start; i < end; i++) {
-                int sum = 0;
-                int bit = start;
-                while (bit != 1) {
-                    sum += Math.pow(i / bit % 10, N);
-                    bit /= 10;
-                }
-                sum += Math.pow(i % 10, N);
-                if (sum == i) {
-                    res.add(i);
-                }
-                if (res.size() == M + 1) {
-                    System.out.println(i);
-                    return;
-                }
-            }
-
-            if (M > res.size()) {
-                System.out.println(M * res.getLast());
-            }
-
         }
-        //Todo
+        if (M> data.size()){
+            System.out.println(M* data.get(data.size()-1));
+        }
+
 
     }
+
+
+//        public static void main(String[] args) {
+//            Scanner in = new Scanner(System.in);
+//
+//            int N = Integer.parseInt(in.nextLine());
+//            int M = Integer.parseInt(in.nextLine());
+//            in.close();
+//
+//            if (N < 3 || N > 7) {
+//                System.out.println(-1);
+//                return;
+//            }
+//
+//            LinkedList<Integer> res = new LinkedList<>();
+//
+//            int start = (int) Math.pow(10, N - 1);
+//            int end = (int) Math.pow(10, N);
+//
+//            for (int i = start; i < end; i++) {
+//                int sum = 0;
+//                int bit = start;
+//                while (bit != 1) {
+//                    sum += Math.pow(i / bit % 10, N);
+//                    bit /= 10;
+//                }
+//                sum += Math.pow(i % 10, N);
+//                if (sum == i) {
+//                    res.add(i);
+//                }
+//                if (res.size() == M + 1) {
+//                    System.out.println(i);
+//                    return;
+//                }
+//            }
+//
+//            if (M > res.size()) {
+//                System.out.println(M * res.getLast());
+//            }
+//
+//        }
+
+}

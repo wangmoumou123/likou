@@ -13,8 +13,8 @@ public class _5_18_GpuCounts {
      */
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            int num = Integer.parseInt(scanner.nextLine());
-            int len = Integer.parseInt(scanner.nextLine());
+            int num = Integer.parseInt(scanner.nextLine().trim());
+            int len = Integer.parseInt(scanner.nextLine().trim());
             int[] datas = new int[len];
             for (int i = 0; i < len; i++) {
                 datas[i] = scanner.nextInt();

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import static java.util.Collections.swap;
+
 public class _5_19_ArrayAortFriends_71 {
 
 
@@ -61,18 +63,19 @@ public class _5_19_ArrayAortFriends_71 {
          说明：出现非法参数情况，返回空数组
          */
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         List<Integer> high = null;
         try {
-            high = Arrays.stream(in.nextLine().split(" "))
-                    .map(Integer::parseInt).collect(Collectors.toList());
+            high = Arrays.stream(scanner.nextLine().trim().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+
+
         } catch (Exception e) {
             System.out.println("[]");
             return;
-        } finally {
-            in.close();
-        }
 
+        } finally {
+            scanner.close();
+        }
         for (int i = 0; i < high.size() - 1; i++) {
             if (i % 2 == 0 && high.get(i) < high.get(i + 1)) {
                 swap(high, i, i + 1);
@@ -81,19 +84,50 @@ public class _5_19_ArrayAortFriends_71 {
                 swap(high, i, i + 1);
             }
         }
-        StringBuilder builder = new StringBuilder();
-        high.forEach(x -> builder.append(x).append(" "));
-        String res = builder.substring(0, builder.length() - 1);
-        System.out.println(res);
+        StringBuilder result = new StringBuilder();
+
+        high.forEach((o ->result.append(o).append(" ")));
+        if (result.length()>0) {
+            System.out.println(result.substring(0, result.length() - 1));
+        }
+
 
     }
 
-    static void swap(List<Integer> list, int x, int y) {
-        Integer tmp = list.get(x);
-        list.set(x, list.get(y));
-        list.set(y, tmp);
-    }
 
-    //Todo
-
+//    public static void main(String[] args) {
+//        Scanner in = new Scanner(System.in);
+//        List<Integer> high = null;
+//        try {
+//            high = Arrays.stream(in.nextLine().split(" "))
+//                    .map(Integer::parseInt).collect(Collectors.toList());
+//        } catch (Exception e) {
+//            System.out.println("[]");
+//            return;
+//        } finally {
+//            in.close();
+//        }
+//
+//        for (int i = 0; i < high.size() - 1; i++) {
+//            if (i % 2 == 0 && high.get(i) < high.get(i + 1)) {
+//                swap(high, i, i + 1);
+//            }
+//            if (i % 2 == 1 && high.get(i) > high.get(i + 1)) {
+//                swap(high, i, i + 1);
+//            }
+//        }
+//        StringBuilder builder = new StringBuilder();
+//        high.forEach(x -> builder.append(x).append(" "));
+//        String res = builder.substring(0, builder.length() - 1);
+//        System.out.println(res);
+//
+//    }
+//
+//    static void swap(List<Integer> list, int x, int y) {
+//        Integer tmp = list.get(x);
+//        list.set(x, list.get(y));
+//        list.set(y, tmp);
+//    }
+//
+//
 }
